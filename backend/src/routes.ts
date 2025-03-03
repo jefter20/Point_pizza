@@ -17,6 +17,9 @@ import { ListByCategoryController } from "./controllers/product/ListByCategoryCo
 import { CreateOrderController } from "./controllers/order/CreateOrderController";
 import { RemoveOrderController } from "./controllers/order/RemoveOrderController";
 import { SendOrderController } from "./controllers/order/SendOrderController";
+import { ListOrdersController } from "./controllers/order/ListOrdersController";
+import { DetailsOrderController } from "./controllers/order/DetailsOrderController";
+import { FinishOrderController } from "./controllers/order/FinishOrderController";
 
 import { AddItemController } from "./controllers/order/AddItemController";
 import { RemoveItemController } from "./controllers/order/RemoveItemController";
@@ -43,6 +46,9 @@ router.get('/category/product', isAuthenticated, new ListByCategoryController().
 router.post('/order', isAuthenticated, new CreateOrderController().handle);
 router.delete('/removeorder', isAuthenticated, new RemoveOrderController().handle)
 router.put('/sendorder', isAuthenticated, new SendOrderController().handle);
+router.get('/listorders', isAuthenticated, new ListOrdersController().handle);
+router.get('/orderdetails', isAuthenticated, new DetailsOrderController().handle);
+router.put('/orderfinish', isAuthenticated, new FinishOrderController().handle);
 
 //-- ROTAS ORDER ITEM --
 router.post('/order/item', isAuthenticated, new AddItemController().handle);
