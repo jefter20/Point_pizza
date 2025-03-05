@@ -20,7 +20,7 @@ class SendOrderService {
         if(!verificaItensMesa) {
             throw new Error("Pedido vazio, por favor adicione um item ao pedido para envia-lo!");
         }
-        console.log(verificaItensMesa)
+
         const sendOrder = await prismaClient.order.update({
             where: {
                 id: order_id

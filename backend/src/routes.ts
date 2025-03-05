@@ -32,26 +32,28 @@ const upload = multer(uploadConfig.upload("./tmp"));
 //-- ROTAS USER --
 router.post('/users', new CreateUserController().handle);
 router.post('/session', new AuthUserController().handle);
-router.get('/userdetail', isAuthenticated, new DetailUserController().handle);
+router.get('/user/detail', isAuthenticated, new DetailUserController().handle);
 
 //-- ROTAS CATEGORY --
 router.post('/category', isAuthenticated, new CreateCategoryController().handle);
-router.get('/listcategory', isAuthenticated, new ListCategoryController().handle);
+router.get('/category/list', isAuthenticated, new ListCategoryController().handle);
 
 //-- ROTAS PRODUCT --
 router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle);
-router.get('/category/product', isAuthenticated, new ListByCategoryController().handle);
+router.get('/product/bycategory', isAuthenticated, new ListByCategoryController().handle);
 
 //-- ROTAS ORDER --
 router.post('/order', isAuthenticated, new CreateOrderController().handle);
-router.delete('/removeorder', isAuthenticated, new RemoveOrderController().handle)
-router.put('/sendorder', isAuthenticated, new SendOrderController().handle);
-router.get('/listorders', isAuthenticated, new ListOrdersController().handle);
-router.get('/orderdetails', isAuthenticated, new DetailsOrderController().handle);
-router.put('/orderfinish', isAuthenticated, new FinishOrderController().handle);
+router.delete('/order/remove', isAuthenticated, new RemoveOrderController().handle)
+router.put('/order/send', isAuthenticated, new SendOrderController().handle);
+
+router.get('/orders/list', isAuthenticated, new ListOrdersController().handle);
+
+router.get('/order/details', isAuthenticated, new DetailsOrderController().handle);
+router.put('/order/finish', isAuthenticated, new FinishOrderController().handle);
 
 //-- ROTAS ORDER ITEM --
 router.post('/order/item', isAuthenticated, new AddItemController().handle);
-router.delete('/order/removeitem', isAuthenticated, new RemoveItemController().handle);
+router.delete('/order/item/remove', isAuthenticated, new RemoveItemController().handle);
 
 export { router };
