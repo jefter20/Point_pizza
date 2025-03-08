@@ -13,6 +13,8 @@ export default function Home() {
         />
 
         <section className={ styles.login }>
+          
+          <h1>Login</h1>
           <form>
             <input
               type="email"
@@ -33,8 +35,8 @@ export default function Home() {
             </button>
           </form>
 
-          <Link href="/signup" className={ styles.text }>
-            Não possue uma conta? Cadastre-se
+          <Link href="/signup">
+            Não possui uma conta? Cadastre-se!
           </Link>
 
         </section>
